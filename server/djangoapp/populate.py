@@ -11,15 +11,15 @@ def initiate():
 
     car_make_instances = []
     for data in car_make_data: 
-            car_make_instances.append(CarMake.objects.create(
-                name=data['name'], description=data['description']))
+        car_make_instances.append(CarMake.objects.create(
+            name=data['name'], description=data['description']))
 
     # Create CarModel instances with the corresponding CarMake instances
     car_model_data = [
-        {"name": "Pathfinder", "body_type": "SUV", 
+        {"name": "Pathfinder", "body_type": "SUV",
             "year": 2023, "car_make": car_make_instances[0]},
-        {"name": "Qashqai", "body_type": "SUV"
-            , "year": 2023, "car_make": car_make_instances[0]},
+        {"name": "Qashqai", "body_type": "SUV",
+            "year": 2023, "car_make": car_make_instances[0]},
         {"name": "XTRAIL", "body_type": "SUV",
             "year": 2023, "car_make": car_make_instances[0]},
         {"name": "A-Class", "body_type": "SUV",
@@ -49,7 +49,11 @@ def initiate():
         # Add more CarModel instances as needed
     ]
 
-    for data in car_model_data: 
-            CarModel.objects.create(name=data['name'], 
-                car_make=data['car_make'], body_type=data['body_type'], 
-                year=data['year'], mileage=0)
+    for data in car_model_data:
+        CarModel.objects.create(
+            name=data['name'],
+            car_make=data['car_make'],
+            body_type=data['body_type'],
+            year=data['year'],
+            mileage=0
+        )
