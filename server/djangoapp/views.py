@@ -1,10 +1,10 @@
-#from django.shortcuts import render
-#from django.http import HttpResponseRedirect, HttpResponse
+# from django.shortcuts import render
+# from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
-#from django.shortcuts import get_object_or_404, render, redirect
+# from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import logout
-#from django.contrib import messages
-#from datetime import datetime
+# from django.contrib import messages
+# from datetime import datetime
 
 from django.http import JsonResponse
 from django.contrib.auth import login, authenticate
@@ -97,7 +97,7 @@ def get_cars(request):
     for car_model in car_models:
         cars.append(
             {
-                "CarModel": car_model.name, 
+                "CarModel": car_model.name,
                 "CarMake": car_model.car_make.name
             }
         )
@@ -144,7 +144,10 @@ def add_review(request):
             post_review(data)
             return JsonResponse({"status": 200})
         except Exception:
-            return JsonResponse({"status": 401,
-                "message": "Error in posting review"})
+            return JsonResponse(
+                {"status": 401,
+                "message": "Error in posting review"
+                }
+            )
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
